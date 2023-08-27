@@ -1,18 +1,16 @@
+package Iteration;
+
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
 
-public class Main {
+public class quiz_8393 {
     public static void main(String[] args) throws IOException {
         //System.setIn(new FileInputStream("src/input.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        while(br.ready()){
-            String[] arr = br.readLine().split(" ");
-            int a = Integer.parseInt(arr[0]);
-            int b = Integer.parseInt(arr[1]);
-            System.out.println(a+b);
-        }
+        int num = Integer.parseInt(br.readLine());
+        int result=0;
+        for(int i=1; i<=num; i++) result += i;
+        System.out.println(result);
     }
 }
