@@ -1,18 +1,32 @@
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        //System.setIn(new FileInputStream("src/input.txt"));
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        while(br.ready()){
-            String[] arr = br.readLine().split(" ");
-            int a = Integer.parseInt(arr[0]);
-            int b = Integer.parseInt(arr[1]);
-            System.out.println(a+b);
+    private static double findHighest (String[] subjects) throws IOException{
+        double highest = 0;
+        for(String subject:subjects){
+            double cur = Double.parseDouble(subject);
+            if(cur>highest) highest = cur;
         }
+        return highest;
+    }
+
+    private static void calculateScore (String[] subjects, double highest){
+        double sum=0;
+        for(String subject:subjects){
+            double cur = Long.parseLong(subject);
+            sum += cur/highest *100;
+        }
+        System.out.println(sum/subjects.length);
+
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        br.readLine();
+        String[] subjects = br.readLine().split(" ");
+        double highest = findHighest(subjects);
+        calculateScore(subjects, highest);
     }
 }
